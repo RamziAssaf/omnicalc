@@ -102,13 +102,14 @@ class CalculationsController < ApplicationController
 
     @mean = @sum / @count
 
+    # VARIANCE
     var_sum = 0
-    @numbers.each do |x|
-        var_sum = var_sum + (x-@mean)**2
+    @numbers.each do |item|
+        var_sum = var_sum + (item - @mean)**2
     end
-    @variance = 1/(@count-1) * var_sum
+    @variance = var_sum/@count
 
-
+    # STANDARD DEVIATION
     @standard_deviation = Math.sqrt(@variance)
 
     # MODE
